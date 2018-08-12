@@ -28,4 +28,14 @@ router.post('/addProduct', (req, res) => {
       console.log(err);
     });
 });
+
+//  @route GET api/products/getAllProducts
+//  @DESC gets all Products Route
+//  @access PUBLIC
+router.get('/getAllProducts', (req, res) => {
+  Product.find()
+    .sort({ date: -1 })
+    .then(products => res.json(products))
+    .catch(err => res.status(404));
+});
 module.exports = router;
